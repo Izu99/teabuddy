@@ -8,10 +8,6 @@
   --white: #F6F6F6; /* Text color for page background */
 }
 
-body {
-    @apply bg-green-600;
-}
-
 
 .bg-green-600 {
   background-color: var(--green-600);

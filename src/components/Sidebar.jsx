@@ -1,4 +1,3 @@
-// SideBar.jsx
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -51,8 +50,11 @@ const SideBar = () => {
             animate={{ width: collapsed ? "85px" : "240px" }}
             transition={{ duration: 0.3 }}
         >
-            <div
+            <motion.div
                 className={`px-4 ${collapsed ? "flex justify-center" : "mb-6"}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
             >
                 {collapsed ? (
                     <div className="w-8 h-8 relative">
@@ -65,27 +67,38 @@ const SideBar = () => {
                         <img src="./tea-logo.png" alt="" />
                     </div>
                 )}
-            </div>
+            </motion.div>
 
             <div className="flex-grow overflow-hidden mt-6">
-                {menuItems.map((item) => (
-                    <Link
-                        to={item.path}
+                {menuItems.map((item, index) => (
+                    <motion.div
                         key={item.name}
-                        className={`flex items-center px-4 py-3 my-2 mx-2 rounded-lg transition-colors duration-200 
-                            ${
-                                isActive(item.path)
-                                    ? "bg-white text-green-600"
-                                    : "hover:bg-green-700 hover:text-white"
-                            }`}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                            duration: 0.3,
+                            delay: 0.1 * index, // Stagger the animation for each item
+                        }}
                     >
-                        <div className={`${collapsed ? "mx-auto" : "mr-3"}`}>
-                            {item.icon}
-                        </div>
-                        {!collapsed && (
-                            <span className="text-lg">{item.name}</span>
-                        )}
-                    </Link>
+                        <Link
+                            to={item.path}
+                            className={`flex items-center px-4 py-3 my-2 mx-2 rounded-lg transition-colors duration-200 
+                                ${
+                                    isActive(item.path)
+                                        ? "bg-white text-green-600"
+                                        : "hover:bg-green-700 hover:text-white"
+                                }`}
+                        >
+                            <div
+                                className={`${collapsed ? "mx-auto" : "mr-3"}`}
+                            >
+                                {item.icon}
+                            </div>
+                            {!collapsed && (
+                                <span className="text-lg">{item.name}</span>
+                            )}
+                        </Link>
+                    </motion.div>
                 ))}
             </div>
 

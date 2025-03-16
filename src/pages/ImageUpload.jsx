@@ -112,7 +112,7 @@ const DiseaseIdentifier = () => {
 
     return (
         <div className="w-full">
-            <Header title="Disease Identifier" />
+            {/* <Header title="Disease Identifier" /> */}
 
             <div className="mb-6">
                 <h1 className="text-2xl font-semibold mb-2">
@@ -122,7 +122,7 @@ const DiseaseIdentifier = () => {
             </div>
 
             <div
-                className={`border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center bg-green-50 border-green-300 transition-all
+                className={`border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center bg-green-200/40 border-green-300 transition-all
                 ${isDragging ? "border-green-500 bg-green-100" : ""}`}
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}

@@ -1,17 +1,19 @@
-// Header.jsx
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { MdArrowDropDown } from "react-icons/md";
 
-const Header = ({ title }) => {
+const Header = () => {
     return (
-        <div className="flex justify-between items-center mb-6">
+        <motion.div
+            className="flex justify-between items-center mb-6"
+            initial={{ opacity: 0, y: -20 }} // Start from above the screen and hidden
+            animate={{ opacity: 1, y: 0 }} // Fade in and slide to normal position
+            transition={{ duration: 0.5 }} // 0.5 second animation duration
+        >
             <div>
                 <div className="flex items-center w-70">
                     <img src="./tea-logo.png" alt="" />
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
