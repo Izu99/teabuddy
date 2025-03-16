@@ -18,7 +18,7 @@ function App() {
         <Router>
             <div className="flex">
                 <SideBar />
-                <div className="flex-1 p-8 bg-green-600">
+                <div className="flex-1 p-8 bg-green-600 -ml-2">
                     <div className="relative flex justify-end mb-4">
                         <motion.div
                             className="flex items-center cursor-pointer rounded-full text-white px-2 py-1"

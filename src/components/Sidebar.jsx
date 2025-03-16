@@ -37,6 +37,14 @@ const SideBar = () => {
         },
     ];
 
+    // Check if current path is empty or invalid and set active to Dashboard
+    const isActive = (path) => {
+        return (
+            location.pathname === path ||
+            (location.pathname === "/" && path === "/dashboard")
+        );
+    };
+
     return (
         <motion.div
             className="h-screen bg-green-600 text-white py-4 flex flex-col"
@@ -47,13 +55,10 @@ const SideBar = () => {
                 className={`px-4 ${collapsed ? "flex justify-center" : "mb-6"}`}
             >
                 {collapsed ? (
-                    <div className="w-8 h-8">
-                        <motion.div
-                            whileHover={{ rotate: 20 }}
-                            className="w-full"
-                        >
-                            <FaSeedling className="w-full h-full" />
-                        </motion.div>
+                    <div className="w-8 h-8 relative">
+                        <div className="flex items-center w-48">
+                            <img src="./tea-logo.png" alt="" />
+                        </div>
                     </div>
                 ) : (
                     <div className="flex items-center w-48">
@@ -63,30 +68,25 @@ const SideBar = () => {
             </div>
 
             <div className="flex-grow overflow-hidden mt-6">
-                {menuItems.map((item) => {
-                    const isActive = location.pathname === item.path;
-                    return (
-                        <Link
-                            to={item.path}
-                            key={item.name}
-                            className={`flex items-center px-4 py-3 my-2 mx-2 rounded-lg transition-colors duration-200 
-              ${
-                  isActive
-                      ? "bg-white text-green-600"
-                      : "hover:bg-green-700 hover:text-white"
-              }`}
-                        >
-                            <div
-                                className={`${collapsed ? "mx-auto" : "mr-3"}`}
-                            >
-                                {item.icon}
-                            </div>
-                            {!collapsed && (
-                                <span className="text-lg">{item.name}</span>
-                            )}
-                        </Link>
-                    );
-                })}
+                {menuItems.map((item) => (
+                    <Link
+                        to={item.path}
+                        key={item.name}
+                        className={`flex items-center px-4 py-3 my-2 mx-2 rounded-lg transition-colors duration-200 
+                            ${
+                                isActive(item.path)
+                                    ? "bg-white text-green-600"
+                                    : "hover:bg-green-700 hover:text-white"
+                            }`}
+                    >
+                        <div className={`${collapsed ? "mx-auto" : "mr-3"}`}>
+                            {item.icon}
+                        </div>
+                        {!collapsed && (
+                            <span className="text-lg">{item.name}</span>
+                        )}
+                    </Link>
+                ))}
             </div>
 
             <div className="px-2 mt-auto">
