@@ -16,12 +16,12 @@ function App() {
 
     return (
         <Router>
-            <div className="flex">
+            <div className="flex bg-green-600">
                 <SideBar />
-                <div className="flex-1 p-8 bg-green-600 -ml-2">
-                    <div className="relative flex justify-end mb-4">
+                <div className="flex-1 p-4">
+                    <div className="flex justify-end mb-4">
                         <motion.div
-                            className="flex items-center cursor-pointer rounded-full text-white px-2 py-1"
+                            className="flex items-center cursor-pointer rounded-full text-white px-2"
                             whileHover={{ scale: 1.05 }}
                             onClick={() => setMenuOpen(!menuOpen)}
                         >
@@ -53,7 +53,7 @@ function App() {
                             )}
                         </AnimatePresence>
                     </div>
-                    <div className="w-full h-full bg-[#F6F6F6] rounded-3xl p-6 shadow-lg">
+                    <div className="w-full h-[96%] bg-[#F6F6F6] rounded-3xl p-6 shadow-lg">
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
                             <Route path="/dashboard" element={<Dashboard />} />

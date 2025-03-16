@@ -46,7 +46,7 @@ const SideBar = () => {
 
     return (
         <motion.div
-            className="h-screen bg-green-600 text-white py-4 flex flex-col"
+            className="h-auto min-h-screen bg-green-600 text-white py-4 flex flex-col"
             animate={{ width: collapsed ? "85px" : "240px" }}
             transition={{ duration: 0.3 }}
         >
