@@ -33,7 +33,7 @@ function App() {
                         <AnimatePresence>
                             {menuOpen && (
                                 <motion.div
-                                    className="absolute right-0 top-12 w-48 rounded-lg shadow-xl z-10"
+                                    className="absolute bg-white right-0 top-12 w-48 rounded-lg shadow-xl z-10"
                                     initial={{ opacity: 0, y: -10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
@@ -60,7 +60,7 @@ function App() {
                             <Route
                                 path="/disease-identifier"
                                 element={<DiseaseIdentifier />}
-                            />
+                            /> 
                             {/* <Route
                                 path="/age-identifier"
                                 element={<AgeIdentifier />}
